@@ -15,6 +15,7 @@ use Yii;
  * @property boolean $state
  * @property integer $tagNum
  * @property integer $createTime
+ * @property string $tagsId
  */
 class Book extends \yii\db\ActiveRecord
 {
@@ -45,14 +46,15 @@ class Book extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'pageNumber' => 'Page Number',
-            'image' => 'Image',
-            'summary' => 'Summary',
-            'state' => 'State',
-            'tagNum' => 'Tag Num',
-            'createTime' => 'Create Time',
+            'id' => '主键，自增长',
+            'name' => '书名',
+            'pageNumber' => '页数',
+            'image' => '图书封面缩略图地址',
+            'summary' => '简介',
+            'state' => '删除状态 1为删除',
+            'tagNum' => '引用标签的数量',
+            'createTime' => '创建时间',
+            'tagsId' => '所用标签ID',
         ];
     }
 

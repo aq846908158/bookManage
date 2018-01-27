@@ -11,6 +11,8 @@ use Yii;
  * @property integer $uid
  * @property boolean $state
  * @property integer $createTime
+ * @property integer $eId
+ * @property boolean $passState
  */
 class RegApply extends \yii\db\ActiveRecord
 {
@@ -28,7 +30,7 @@ class RegApply extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'createTime'], 'integer'],
+            [['uid', 'createTime','eId'], 'integer'],
             [['state'], 'boolean'],
         ];
     }
@@ -41,8 +43,10 @@ class RegApply extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'uid' => 'Uid',
-            'state' => 'State',
+            'state' => '审核状态',
             'createTime' => 'Create Time',
+            'eId' => '企业ID',
+            'passState' => '通过状态  true为通过',
         ];
     }
 }

@@ -14,6 +14,9 @@ use Yii;
  * @property string $name
  * @property string $employeeId
  * @property integer $createTime
+ * @property string $phone
+ * @property string $salt
+ * @property boolean $state
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -32,6 +35,7 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['createTime'], 'integer'],
+            [['salt'], 'string'],
             [['user_Name'],'required','message'=>'用户名必须填写'],
             [['user_Name'],'match','pattern'=>'/^[a-zA-Z0-9_-]{8,32}$/','message'=>'用户名长度必须在8-32位字符以内'],
             [[ 'wxId', 'employeeId'], 'string', 'max' => 255,"message"=>"长了"],
@@ -39,6 +43,7 @@ class User extends \yii\db\ActiveRecord
             [['userPwd'],'match','pattern'=>'/^[0-9a-zA-Z!@#$^]{8,32}$/','message'=>'密码长度必须在8-32位字符以内'],
             [['name'],'required','message'=>'真实姓名必须填写'],
             [['name'],'string', 'length' => [2, 6]],
+            [['user_Name'], 'unique','message'=>'用户名已经被使用'],
         ];
     }
 
@@ -55,6 +60,9 @@ class User extends \yii\db\ActiveRecord
             'name' => '真实姓名',
             'employeeId' => '企业ID',
             'createTime' => '创建时间',
+            'phone' => '电话号码',
+            'salt' => '盐值',
+            'state' => '禁止登录状态',
         ];
     }
 }

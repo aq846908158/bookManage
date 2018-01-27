@@ -48,7 +48,9 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-               'GET /test'=>'/test/test'
+               'POST /test'=>'/test/test',
+               'GET /enterprise'=>'/enterprise/get-all-enterprise',//获取全部企业信息
+               'POST /enterprise'=>'/enterprise/enterprise_activation',//获取全部企业信息
             ],
         ],
 

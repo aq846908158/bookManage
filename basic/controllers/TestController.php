@@ -11,21 +11,8 @@ class TestController extends BaseContorller
 {
    public function  actionTest()
    {
-
-
        Yii::$app->response->format = Response::FORMAT_JSON;
-       $model=new User();
-       $model->user_Name="12345678123456781234567812345678";
-       $model->userPwd="12345678123456781234567812345678";
-       $model->name="我是";
-       $model->validate();
-
-       if(!empty($model->errors))
-       {
-           return ["message"=>$model->errors];
-       }
-       $model->insert();
-       return ["message"=>"查询成功"];
+       return ["message"=>JWT::decode($_SERVER['HTTP_AUTHORIZATION'])];
    }
 
 
