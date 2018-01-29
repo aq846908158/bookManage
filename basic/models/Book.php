@@ -16,6 +16,7 @@ use Yii;
  * @property integer $tagNum
  * @property integer $createTime
  * @property string $tagsId
+ * @property integer $eId
  */
 class Book extends \yii\db\ActiveRecord
 {
@@ -33,8 +34,9 @@ class Book extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['pageNumber', 'tagNum', 'createTime'], 'integer'],
-            [['summary'], 'string'],
+            [['pageNumber', 'tagNum', 'createTime','eId'], 'integer'],
+            [['summary','tagsId'], 'string'],
+            [['tagsId'], 'required'],
             [['state'], 'boolean'],
             [['name', 'image'], 'string', 'max' => 255],
         ];
@@ -55,6 +57,7 @@ class Book extends \yii\db\ActiveRecord
             'tagNum' => '引用标签的数量',
             'createTime' => '创建时间',
             'tagsId' => '所用标签ID',
+            'eId' => '企业ID',
         ];
     }
 

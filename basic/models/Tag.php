@@ -30,7 +30,7 @@ class Tag extends \yii\db\ActiveRecord
         return [
             [['bids'], 'string'],
             [['bookNum'], 'integer'],
-            [['tagName'], 'string', 'max' => 10],
+            [['tagName'], 'string'],
         ];
     }
 

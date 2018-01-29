@@ -55,7 +55,7 @@ class UserController extends BaseContorller
         $user=$model::find()->where(['user_Name' => $model->user_Name])->One();
         if(empty($user)){return["errorCode"=>"500","message"=>"用户名不存在"]; }
         if($user["userPwd"]!=md5($model->userPwd.$user["salt"],false)){return["errorCode"=>"500","message"=>"密码输入错误"];};
-        $token=JWT::encode($user["id"]);
+        $token=JWT::encode($user["id"],$user["employeeId"]);
         return["errorCode"=>"200","message"=>"登录成功","token"=>$token];
     }
 }

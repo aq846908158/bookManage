@@ -36,14 +36,15 @@ class JWT
 
     }
 
-    public static function encode( $uid)
+    public static function encode( $uid,$eid)
     {
         $alg = 'SHA256';
         $payload=[
             'iss' => "system", //签发者
             'iat' => $_SERVER['REQUEST_TIME'], //什么时候签发的
             'exp' => $_SERVER['REQUEST_TIME'] + 259200, //过期时间  3天
-            'uid'=>$uid
+            'uid'=>$uid,
+            'eid'=>$eid
         ];
         $key = md5("testKey");
         $jwt = base64_encode(json_encode(['typ' => 'JWT', 'alg' => $alg])) . '.' .base64_encode(json_encode($payload));
